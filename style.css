@@ -1,49 +1,92 @@
-/* Estilos globales y reseteo básico */
+/* Variables de color para modo oscuro (por defecto) */
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --primary-color: #00ff00;
+    --secondary-color: #64b5f6;
+    --accent-color: #333;
+    --section-bg: rgba(26, 26, 26, 0.9);
+}
+
+/* Variables de color para modo claro */
+body.light-mode {
+    --bg-color: #f0f0f0;
+    --text-color: #1a1a1a;
+    --primary-color: #008000;
+    --secondary-color: #0288d1;
+    --accent-color: #ddd;
+    --section-bg: rgba(240, 240, 240, 0.9);
+}
+
+/* Estilos globales y reseteo básico (ahora usando variables) */
 body {
-    background-color: #1a1a1a; /* Fondo oscuro */
-    color: #e0e0e0; /* Color de texto claro */
-    font-family: 'Roboto Mono', monospace; /* Fuente de Google Fonts, similar a la del ejemplo */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto Mono', monospace;
     margin: 0;
     line-height: 1.6;
-    padding-top: 60px; /* Espacio para que el contenido no quede bajo el menú fijo */
+    padding-top: 60px;
+    position: relative;
+    transition: background-color 0.5s ease;
 }
 
 html {
-    scroll-behavior: smooth; /* Para que el scroll sea suave al hacer clic en los enlaces */
+    scroll-behavior: smooth;
+}
+
+/* --- CANVAS y secciones para el fondo --- */
+#matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    background-color: #000;
+}
+
+.section, .page-header, .projects-container, footer {
+    position: relative;
+    background-color: var(--section-bg);
+    transition: background-color 0.5s ease;
 }
 
 /* Estilos para el menú de navegación */
 .main-nav {
-    position: fixed; /* Lo fija en la parte superior de la página */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between; /* Distribuye el espacio entre los enlaces y los iconos */
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
-    background-color: rgba(26, 26, 26, 0.8); /* Fondo semi-transparente */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    z-index: 10; /* Lo mantiene por encima del resto del contenido */
+    background-color: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+}
+
+body.light-mode .main-nav {
+    background-color: rgba(240, 240, 240, 0.8);
 }
 
 .main-nav a {
-    color: #e0e0e0;
+    color: var(--text-color);
     font-size: 1rem;
     margin-right: 20px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .main-nav a:hover {
-    color: #4CAF50; /* Color de acento al pasar el mouse */
-    transform: translateY(-3px); /* Pequeño efecto de elevación */
+    color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
 .main-nav a.active {
-    color: #00ff00; /* Un verde más brillante para el enlace activo */
-    font-weight: bold; /* Opcional: hacer el texto más grueso */
-    border-bottom: 2px solid #00ff00;
+    color: var(--primary-color);
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 2px;
 }
 
@@ -52,18 +95,18 @@ html {
 }
 
 .nav-social a i {
-    color: #e0e0e0;
+    color: var(--text-color);
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .nav-social a:hover i {
-    color: #0f0; /* Color verde */
-    transform: scale(1.2); /* Icono se agranda un poco */
+    color: var(--primary-color);
+    transform: scale(1.2);
 }
 
 /* Estilos de la cabecera (sección "Hero") */
 .hero {
-    height: calc(100vh - 60px); /* Ocupa casi el 100% de la altura de la ventana, restando el menú */
+    height: calc(100vh - 60px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,36 +114,24 @@ html {
     position: relative;
     padding: 20px;
     box-sizing: border-box;
+    z-index: 1;
 }
 
-/* Contenedor principal del contenido del hero, para que esté por encima de los fondos */
 .hero-content {
     position: relative;
-    z-index: 2; /* Por encima de las partículas y el efecto Matrix */
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Estilos para el efecto Matrix */
-#matrix-rain {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2; /* Más bajo que las partículas */
-    background-color: #000;
-}
-
-/* Estilos para el contenedor de partículas */
 #particles-js {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1; /* Envía el fondo de partículas detrás del texto */
+    z-index: -1;
 }
 
 /* Máscara de Anonymous */
@@ -108,11 +139,10 @@ html {
     width: 150px;
     height: auto;
     margin-bottom: 20px;
-    filter: drop-shadow(0 0 10px #0f0); /* Sombra de brillo verde */
-    animation: breathe 3s infinite alternate; /* Animación de "respiración" */
+    filter: drop-shadow(0 0 10px var(--primary-color));
+    animation: breathe 3s infinite alternate;
 }
 
-/* Animación de "respiración" */
 @keyframes breathe {
     0% {
         transform: scale(1);
@@ -124,52 +154,161 @@ html {
     }
 }
 
+/* Título principal con efecto Glitch */
 .main-title {
-    font-size: clamp(2rem, 8vw, 5rem); /* Título responsivo */
+    font-size: clamp(2rem, 8vw, 5rem);
     margin: 0;
     font-weight: 700;
-    color: #0f0; /* Título en color verde "hacker" */
-    text-shadow: 0 0 5px #0f0;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+    position: relative;
     transition: text-shadow 0.3s ease;
 }
 
 .main-title:hover {
-    text-shadow: 0 0 15px #0f0, 0 0 25px #0f0; /* Brillo más intenso al pasar el cursor */
+    text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color);
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch:hover::before, .glitch:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.glitch:hover::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.glitch:hover::after {
+    left: -2px;
+    text-shadow: -2px 0 blue;
+    animation: glitch-anim2 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip-path: inset(30% 0 35% 0);
+    }
+    20% {
+        clip-path: inset(5% 0 80% 0);
+    }
+    40% {
+        clip-path: inset(60% 0 10% 0);
+    }
+    60% {
+        clip-path: inset(15% 0 65% 0);
+    }
+    80% {
+        clip-path: inset(30% 0 30% 0);
+    }
+    100% {
+        clip-path: inset(40% 0 50% 0);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip-path: inset(40% 0 50% 0);
+    }
+    20% {
+        clip-path: inset(10% 0 60% 0);
+    }
+    40% {
+        clip-path: inset(55% 0 15% 0);
+    }
+    60% {
+        clip-path: inset(5% 0 85% 0);
+    }
+    80% {
+        clip-path: inset(70% 0 10% 0);
+    }
+    100% {
+        clip-path: inset(35% 0 30% 0);
+    }
+}
+
+/* Efecto de Typing en el subtítulo */
+.typing-text {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-top: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--primary-color);
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-color); }
 }
 
 /* Estilos de las secciones de contenido */
 .section {
     max-width: 800px;
-    margin: 0 auto; /* Centra el contenido */
+    margin: 0 auto;
     padding: 80px 20px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--accent-color);
 }
 
 .section:last-child {
-    border-bottom: none; /* Elimina la línea en la última sección */
+    border-bottom: none;
 }
 
 h2 {
     font-size: 2.5rem;
-    color: #f0f0f0;
-    border-bottom: 2px solid #555;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--accent-color);
     display: inline-block;
     padding-bottom: 5px;
     margin-bottom: 2rem;
 }
 
-/* Estilos específicos para la sección "Acerca de mí" */
-.about-section {
-    /* Estilos para el contenedor del texto */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 
-.about-content {
-    
+.profile-pic-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic-container:hover {
+    transform: scale(1.05);
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.about-text {
+    flex-grow: 1;
 }
 
 #about h2 {
-    color: #64b5f6; /* Un azul más llamativo */
-    border-bottom-color: #81d4fa;
+    color: var(--secondary-color);
+    border-bottom-color: var(--secondary-color);
 }
 
 #about p {
@@ -180,41 +319,37 @@ h2 {
     transform: translateY(-5px);
 }
 
-/* Estilos de enlaces y botones */
 a {
-    color: #4CAF50; /* Un color de acento para los enlaces */
+    color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #66BB6A; /* Un color un poco más claro al pasar el mouse */
+    color: #66BB6A;
 }
 
-/* Estilos de la sección de contacto y enlaces sociales */
 .social-links a {
     margin-right: 20px;
     font-size: 1.2rem;
 }
 
-/* Estilos para el botón del cohete */
 .rocket-button {
     background: none;
     border: none;
     font-size: 3rem;
-    color: #00ff00;
+    color: var(--primary-color);
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     margin-top: 20px;
-    display: inline-block; /* Para que la animación de hover funcione */
+    display: inline-block;
 }
 
 .rocket-button:hover {
-    transform: scale(1.2) rotate(-10deg); /* Animación al pasar el mouse */
-    filter: drop-shadow(0 0 10px #0f0);
+    transform: scale(1.2) rotate(-10deg);
+    filter: drop-shadow(0 0 10px var(--primary-color));
 }
 
-/* Estilos del pie de página */
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -222,21 +357,343 @@ footer {
     font-size: 0.9rem;
 }
 
-/* --- ESTILOS PARA LA PÁGINA DE PROYECTOS (projects.html) --- */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -13px;
+    background-color: var(--bg-color);
+    border: 3px solid var(--primary-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -12px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: #2a2a2a;
+    position: relative;
+    border-radius: 6px;
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+}
+
+body.light-mode .timeline-content {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.timeline-company {
+    color: #999;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.timeline-date {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.timeline-content ul {
+    list-style-type: '» ';
+    padding-left: 20px;
+}
+
+.timeline-content li {
+    margin-bottom: 5px;
+}
+
+.timeline-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 20px;
+    right: -30px;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even) .timeline-icon {
+    left: -30px;
+}
+
+/* --- ESTILOS PARA LA SECCIÓN DE HABILIDADES --- */
+#skills h2 {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.skill-item-detailed {
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    flex: 1 1 250px;
+    max-width: 250px;
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .skill-item-detailed {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.skill-item-detailed:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.3);
+}
+
+.skill-item-detailed i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.skill-item-detailed h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.skill-item-detailed p {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+/* --- ESTILOS PARA EL NUEVO FORMULARIO DE CONTACTO --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #222;
+    color: #eee;
+    font-family: 'Roboto Mono', monospace;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.light-mode .contact-form input,
+body.light-mode .contact-form textarea {
+    background-color: #fff;
+    color: #333;
+    border-color: #ccc;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.submit-button {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.02);
+}
+
+.submit-button i {
+    margin-left: 10px;
+}
+
+.contact-info {
+    margin-top: 40px;
+    text-align: center;
+    color: #aaa;
+}
+
+.download-cv-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+}
+
+.download-cv-button:hover {
+    background-color: #fff;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Estilos del botón de Dark/Light Mode */
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    color: var(--secondary-color);
+}
+
+/* * ----------------------------------------------------
+* NUEVO FONDO ANIMADO PARA LA PÁGINA DE PROYECTOS 
+* ----------------------------------------------------
+*/
 .projects-page-body {
-    padding-top: 100px;
+    padding-top: 60px;
+    background: 
+        linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+        repeating-linear-gradient(
+            0deg, 
+            rgba(0, 255, 0, 0.1), 
+            rgba(0, 255, 0, 0.1) 1px, 
+            transparent 1px, 
+            transparent 40px
+        ),
+        repeating-linear-gradient(
+            90deg, 
+            rgba(0, 255, 0, 0.1), 
+            rgba(0, 255, 0, 0.1) 1px, 
+            transparent 1px, 
+            transparent 40px
+        );
+    background-size: 100% 100%, 100% 100px, 100px 100%;
+    animation: move-background 10s linear infinite;
+}
+
+body.light-mode .projects-page-body {
+    background: 
+        linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+        repeating-linear-gradient(
+            0deg, 
+            rgba(0, 128, 0, 0.1), 
+            rgba(0, 128, 0, 0.1) 1px, 
+            transparent 1px, 
+            transparent 40px
+        ),
+        repeating-linear-gradient(
+            90deg, 
+            rgba(0, 128, 0, 0.1), 
+            rgba(0, 128, 0, 0.1) 1px, 
+            transparent 1px, 
+            transparent 40px
+        );
+    background-size: 100% 100%, 100% 100px, 100px 100%;
+    animation: move-background 10s linear infinite;
+}
+
+@keyframes move-background {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px;
+    }
 }
 
 .page-header {
+    position: relative;
     text-align: center;
-    padding-top: 50px;
-    margin-bottom: 50px;
+    padding: 80px 20px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    background: none; /* Quitamos el fondo para que se vea el body animado */
 }
 
 .page-header h1 {
-    font-size: clamp(2rem, 8vw, 4rem);
-    color: #0f0;
-    text-shadow: 0 0 5px #0f0;
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    position: relative;
+    z-index: 1;
+}
+
+/* QUITAMOS LAS PARTÍCULAS YA QUE NO SE VEN BIEN CON EL NUEVO FONDO */
+#particles-js {
+    display: none;
 }
 
 .projects-container {
@@ -244,41 +701,64 @@ footer {
     margin: 0 auto;
     padding: 20px;
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
+    z-index: 1;
 }
 
 .project-item {
-    display: flex;
-    align-items: center;
-    background-color: #2a2a2a;
+    background-color: rgba(26, 26, 26, 0.7);
+    border: 1px solid var(--primary-color);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    transition: all 0.3s ease, box-shadow 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(5px); /* Efecto de cristal esmerilado */
+}
+
+body.light-mode .project-item {
+    background-color: rgba(240, 240, 240, 0.7);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 128, 0, 0.3);
 }
 
 .project-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.4);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 25px var(--primary-color), 0 0 40px var(--primary-color);
 }
 
 .project-icon {
     font-size: 3rem;
-    color: #0f0;
-    margin-right: 30px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover .project-icon {
+    transform: rotate(10deg);
 }
 
 .project-info h3 {
-    color: #fff;
+    color: var(--text-color);
     margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.project-info p {
+    font-size: 1rem;
+    color: var(--text-color);
 }
 
 .project-link {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #0f0;
-    color: #1a1a1a;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: var(--primary-color);
+    color: var(--bg-color);
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease;
@@ -293,52 +773,30 @@ footer {
     margin-left: 10px;
 }
 
-.skills-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-top: 40px;
-}
-
-.skill-item {
-    text-align: center;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.skill-item:hover {
-    transform: translateY(-10px);
-    color: #00ff00;
-}
-
-.skill-item i, .skill-item svg {
-    font-size: 4rem;
-    height: 64px;
-    width: 64px;
-    color: #e0e0e0;
-}
-
-.skill-item svg {
-    filter: invert(1);
-}
-
-.skill-item p {
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #e0e0e0;
-}
-
 /* Media Queries para adaptabilidad en móviles */
 @media (max-width: 768px) {
     .main-nav {
         flex-direction: column;
         padding: 15px;
+        align-items: flex-start;
     }
     .main-nav .nav-links {
         margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .main-nav .nav-social {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .nav-social a, #theme-toggle {
+        margin-right: 0;
     }
     body {
-        padding-top: 120px;
+        padding-top: 150px;
     }
     .hero {
         height: auto;
@@ -355,5 +813,41 @@ footer {
     }
     .project-icon {
         margin: 0 0 20px 0;
+    }
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-text {
+        text-align: center;
+    }
+    .timeline::after {
+        left: 20px;
+    }
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 15px;
+        margin-bottom: 20px;
+    }
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    .timeline-item::after, .timeline-item:nth-child(even)::after {
+        left: 10px;
+    }
+    .timeline-icon, .timeline-item:nth-child(even) .timeline-icon {
+        left: 15px;
+        right: auto;
+    }
+    .skills-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .skill-item-detailed {
+        max-width: 100%;
+    }
+    .typing-text {
+        font-size: 1.2rem;
     }
 }

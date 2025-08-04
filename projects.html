@@ -1,120 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyectos - Misael Toscano</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Mis Proyectos - Misael Toscano</title>
+ <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="projects-page-body">
+<body class="dark-mode projects-page-body">
+ <canvas id="matrix-rain"></canvas>
+ <nav class="main-nav">
+  <div class="nav-links">
+   <a href="index.html#about">Acerca de mí</a>
+   <a href="index.html#experience">Experiencia</a>
+   <a href="index.html#skills">Habilidades</a>
+   <a href="#">Proyectos</a>
+   <a href="index.html#contact">Contacto</a>
+  </div>
+  <div class="nav-social">
+   <a href="https://github.com/MISAGANG" target="_blank"><i class="fab fa-github"></i></a>
+   <a href="https://twitter.com/8773Misa" target="_blank"><i class="fab fa-twitter"></i></a>
+   <a href="mailto:misa.tosca@gmail.com"><i class="fas fa-envelope"></i></a>
+   <button id="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-sun"></i>
+   </button>
+  </div>
+ </nav>
 
-    <nav class="main-nav">
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="#projects">Proyectos</a>
-        </div>
-        <div class="nav-social">
-            <a href="https://github.com/tuusuario" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://twitter.com/tuusuario" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="mailto:tuemail@example.com"><i class="fas fa-envelope"></i></a>
-        </div>
-    </nav>
+ <header class="page-header">
+  <div id="particles-js"></div>
+  <h1>Mis Proyectos</h1>
+ </header>
 
-    <header class="page-header">
-        <h1>Mis Proyectos y Habilidades</h1>
-    </header>
+ <div class="projects-container">
+  <div class="project-item">
+   <i class="fas fa-code project-icon"></i>
+   <div class="project-info">
+    <h3>Poryectos cortos</h3>
+    <p></p>
+    <a href="#" class="project-link">Ver Proyecto <i class="fas fa-external-link-alt"></i></a>
+   </div>
+  </div>
 
-    <main class="projects-container">
-        
-        <h3>Mis Habilidades</h3>
-        <div class="skills-grid modal-grid">
-            <div class="skill-item">
-                <i class="fab fa-html5"></i>
-                <p>HTML5</p>
-            </div>
-            <div class="skill-item">
-                <i class="fab fa-css3-alt"></i>
-                <p>CSS3</p>
-            </div>
-            <div class="skill-item">
-                <i class="fab fa-java"></i>
-                <p>Java</p>
-            </div>
-            <div class="skill-item">
-                <i class="fab fa-python"></i>
-                <p>Python</p>
-            </div>
-            <div class="skill-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 500 500">
-                    <path fill="#e0e0e0" d="M372 400c-78 0-142-64-142-142S294 116 372 116s142 64 142 142-64 142-142 142zm0-244c-56 0-102 46-102 102s46 102 102 102 102-46 102-102-46-102-102-102zm-357 56L158 171c-30 0-54 24-54 54s24 54 54 54h149c44 0 79-35 79-79s-35-79-79-79h-12c-2 0-3-2-3-4v-11c0-2 2-3 4-3h11c60 0 108 48 108 108s-48 108-108 108H158c-52 0-95-43-95-95s43-95 95-95h16c2 0 3 2 3 4v11c0 2-2 3-4 3h-15c-30 0-54 24-54 54z"/>
-                </svg>
-                <p>C#</p>
-            </div>
-            <div class="skill-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 256 256" style="fill:#e0e0e0;">
-                    <path d="M228 178c-1.3 0-2.6 0-3.9-0.1L200.7 131l23.4-47.5c2.4-4.8 1.4-10.7-2.6-14.7l-16.7-16.7c-4-4-9.9-5-14.7-2.6L145 92.5 98.3 69.1c-4.8-2.4-10.7-1.4-14.7 2.6l-16.7 16.7c-4 4-5 9.9-2.6 14.7L92.5 145 69.1 191.7c-2.4 4.8-1.4 10.7 2.6 14.7l16.7 16.7c4 4 9.9 5 14.7 2.6L145 163.5l46.7 23.4c4.8 2.4 10.7 1.4 14.7-2.6l16.7-16.7c4-4 5-9.9 2.6-14.7L163.5 145l23.4-46.7c2.4-4.8 1.4-10.7-2.6-14.7l-16.7-16.7c-4-4-9.9-5-14.7-2.6L145 92.5 98.3 69.1c-4.8-2.4-10.7-1.4-14.7 2.6l-16.7 16.7c-4 4-5 9.9-2.6 14.7L92.5 145l-23.4 46.7c-2.4 4.8-1.4 10.7 2.6 14.7l16.7 16.7c4 4 9.9 5 14.7 2.6L145 163.5z"/>
-                </svg>
-                <p>Blueprint</p>
-            </div>
-        </div>
+  <div class="project-item">
+   <i class="fas fa-laptop project-icon"></i>
+   <div class="project-info">
+    <h3>Proyectos a largo plazo</h3>
+    <p></p>
+    <a href="#" class="project-link">Ver Código <i class="fab fa-github"></i></a>
+   </div>
+  </div>
 
-        <h3 style="margin-top: 50px;">Mis Proyectos</h3>
-        <div class="project-item project-cool">
-            <div class="project-icon">
-                <i class="fas fa-code"></i>
-            </div>
-            <div class="project-info">
-                <h3>Proyecto de Desarrollo Web</h3>
-                <p>
-                    Descripción detallada del proyecto. Aquí puedes hablar de los retos, las tecnologías
-                    utilizadas (HTML, CSS, JavaScript, React, etc.) y las funcionalidades principales.
-                </p>
-                <a href="URL_DEL_PROYECTO_1" class="project-link" target="_blank">
-                    Ver en GitHub <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
+  </div>
 
-        <div class="project-item project-cool">
-            <div class="project-icon">
-                <i class="fas fa-gamepad"></i>
-            </div>
-            <div class="project-info">
-                <h3>Juego en C# con Unity</h3>
-                <p>
-                    Un juego 2D/3D desarrollado en C# y Unity. Se implementaron mecánicas de juego,
-                    sistemas de físicas y optimización de rendimiento.
-                </p>
-                <a href="URL_DEL_PROYECTO_2" class="project-link" target="_blank">
-                    Ver proyecto <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-        
-        <div class="project-item project-cool">
-            <div class="project-icon">
-                <i class="fas fa-robot"></i>
-            </div>
-            <div class="project-info">
-                <h3>Aplicación de Python y IA</h3>
-                <p>
-                    Aplicación de escritorio o web usando Python. Se utilizó machine learning
-                    para análisis de datos o automatización de tareas.
-                </p>
-                <a href="URL_DEL_PROYECTO_3" class="project-link" target="_blank">
-                    Ver repositorio <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </main>
+ <footer>
+  <p>&copy; 2024 Misael Toscano. Todos los derechos reservados.</p>
+ </footer>
 
-    <footer>
-        <p>&copy; 2024 Misael Toscano. Todos los derechos reservados.</p>
-    </footer>
-
+ <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.41.0/dist/tsparticles.min.js"></script>
+ <script src="script.js"></script>
+ <script src="particles-projects-config.js"></script>
 </body>
 </html>
