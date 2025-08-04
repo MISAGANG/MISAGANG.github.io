@@ -1,0 +1,359 @@
+/* Estilos globales y reseteo básico */
+body {
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #e0e0e0; /* Color de texto claro */
+    font-family: 'Roboto Mono', monospace; /* Fuente de Google Fonts, similar a la del ejemplo */
+    margin: 0;
+    line-height: 1.6;
+    padding-top: 60px; /* Espacio para que el contenido no quede bajo el menú fijo */
+}
+
+html {
+    scroll-behavior: smooth; /* Para que el scroll sea suave al hacer clic en los enlaces */
+}
+
+/* Estilos para el menú de navegación */
+.main-nav {
+    position: fixed; /* Lo fija en la parte superior de la página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Distribuye el espacio entre los enlaces y los iconos */
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(26, 26, 26, 0.8); /* Fondo semi-transparente */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+    z-index: 10; /* Lo mantiene por encima del resto del contenido */
+}
+
+.main-nav a {
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin-right: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #4CAF50; /* Color de acento al pasar el mouse */
+    transform: translateY(-3px); /* Pequeño efecto de elevación */
+}
+
+.main-nav a.active {
+    color: #00ff00; /* Un verde más brillante para el enlace activo */
+    font-weight: bold; /* Opcional: hacer el texto más grueso */
+    border-bottom: 2px solid #00ff00;
+    padding-bottom: 2px;
+}
+
+.nav-social a {
+    font-size: 1.2rem;
+}
+
+.nav-social a i {
+    color: #e0e0e0;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.nav-social a:hover i {
+    color: #0f0; /* Color verde */
+    transform: scale(1.2); /* Icono se agranda un poco */
+}
+
+/* Estilos de la cabecera (sección "Hero") */
+.hero {
+    height: calc(100vh - 60px); /* Ocupa casi el 100% de la altura de la ventana, restando el menú */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Contenedor principal del contenido del hero, para que esté por encima de los fondos */
+.hero-content {
+    position: relative;
+    z-index: 2; /* Por encima de las partículas y el efecto Matrix */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para el efecto Matrix */
+#matrix-rain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Más bajo que las partículas */
+    background-color: #000;
+}
+
+/* Estilos para el contenedor de partículas */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Envía el fondo de partículas detrás del texto */
+}
+
+/* Máscara de Anonymous */
+.anonymous-mask {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px #0f0); /* Sombra de brillo verde */
+    animation: breathe 3s infinite alternate; /* Animación de "respiración" */
+}
+
+/* Animación de "respiración" */
+@keyframes breathe {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+.main-title {
+    font-size: clamp(2rem, 8vw, 5rem); /* Título responsivo */
+    margin: 0;
+    font-weight: 700;
+    color: #0f0; /* Título en color verde "hacker" */
+    text-shadow: 0 0 5px #0f0;
+    transition: text-shadow 0.3s ease;
+}
+
+.main-title:hover {
+    text-shadow: 0 0 15px #0f0, 0 0 25px #0f0; /* Brillo más intenso al pasar el cursor */
+}
+
+/* Estilos de las secciones de contenido */
+.section {
+    max-width: 800px;
+    margin: 0 auto; /* Centra el contenido */
+    padding: 80px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.section:last-child {
+    border-bottom: none; /* Elimina la línea en la última sección */
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: #f0f0f0;
+    border-bottom: 2px solid #555;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 2rem;
+}
+
+/* Estilos específicos para la sección "Acerca de mí" */
+.about-section {
+    /* Estilos para el contenedor del texto */
+}
+
+.about-content {
+    
+}
+
+#about h2 {
+    color: #64b5f6; /* Un azul más llamativo */
+    border-bottom-color: #81d4fa;
+}
+
+#about p {
+    transition: transform 0.3s ease-in-out;
+}
+
+#about p:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilos de enlaces y botones */
+a {
+    color: #4CAF50; /* Un color de acento para los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #66BB6A; /* Un color un poco más claro al pasar el mouse */
+}
+
+/* Estilos de la sección de contacto y enlaces sociales */
+.social-links a {
+    margin-right: 20px;
+    font-size: 1.2rem;
+}
+
+/* Estilos para el botón del cohete */
+.rocket-button {
+    background: none;
+    border: none;
+    font-size: 3rem;
+    color: #00ff00;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    margin-top: 20px;
+    display: inline-block; /* Para que la animación de hover funcione */
+}
+
+.rocket-button:hover {
+    transform: scale(1.2) rotate(-10deg); /* Animación al pasar el mouse */
+    filter: drop-shadow(0 0 10px #0f0);
+}
+
+/* Estilos del pie de página */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* --- ESTILOS PARA LA PÁGINA DE PROYECTOS (projects.html) --- */
+.projects-page-body {
+    padding-top: 100px;
+}
+
+.page-header {
+    text-align: center;
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+}
+
+.projects-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    gap: 40px;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 255, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.4);
+}
+
+.project-icon {
+    font-size: 3rem;
+    color: #0f0;
+    margin-right: 30px;
+}
+
+.project-info h3 {
+    color: #fff;
+    margin-top: 0;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #0f0;
+    color: #1a1a1a;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: #00e600;
+    transform: scale(1.05);
+}
+
+.project-link i {
+    margin-left: 10px;
+}
+
+.skills-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.skill-item {
+    text-align: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
+    color: #00ff00;
+}
+
+.skill-item i, .skill-item svg {
+    font-size: 4rem;
+    height: 64px;
+    width: 64px;
+    color: #e0e0e0;
+}
+
+.skill-item svg {
+    filter: invert(1);
+}
+
+.skill-item p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #e0e0e0;
+}
+
+/* Media Queries para adaptabilidad en móviles */
+@media (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+        padding: 15px;
+    }
+    .main-nav .nav-links {
+        margin-bottom: 10px;
+    }
+    body {
+        padding-top: 120px;
+    }
+    .hero {
+        height: auto;
+    }
+    .section {
+        padding: 40px 15px;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    .project-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .project-icon {
+        margin: 0 0 20px 0;
+    }
+}
